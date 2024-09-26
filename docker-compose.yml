@@ -1,0 +1,14 @@
+services:
+  report:  # one command: docker compose run --rm report   -> ./outputs/report.md
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - ./outputs:/app/outputs
+  api:  # docker compose up api   -> http://localhost:8000/docs
+    build: .
+    command: ["python", "-m", "dispatchlab", "serve", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    profiles: ["api"]

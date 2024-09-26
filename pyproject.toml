@@ -1,0 +1,19 @@
+[project]
+name = "dispatchlab"
+version = "0.1.0"
+description = "Counterfactual simulator for order batching and shopper assignment"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy", "pandas", "pyarrow", "duckdb", "lightgbm", "scikit-learn", "joblib",
+  "ortools", "matplotlib", "fastapi", "uvicorn", "pydantic",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx"]
+
+[tool.setuptools.packages.find]
+include = ["dispatchlab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::UserWarning"]
